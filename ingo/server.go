@@ -11,12 +11,16 @@ func Serve() {
 
   router := gin.Default()
 
-  routes := router.Group("/compute")
-  routes.GET("/fib", controller.Fibcontr)
-  routes.GET("/parity", controller.Paritycontr)
-  routes.GET("/sum", controller.Sumcontr)
-  routes.GET("/random", controller.Randomcontr)
-  routes.GET("/computeall", controller.Allcontr)
+  computeRoutes := router.Group("/compute")
+  computeRoutes.GET("/fib", controller.Fibcontr)
+  computeRoutes.GET("/parity", controller.Paritycontr)
+  computeRoutes.GET("/sum", controller.Sumcontr)
+  computeRoutes.GET("/random", controller.Randomcontr)
+  computeRoutes.GET("/computeall", controller.Allcontr)
+
+  databaseRoutes := router.Group("/database")
+  databaseRoutes.GET("/put", controller.DatabasePut)
+  databaseRoutes.GET("/get", controller.DatabaseGet)
 
   log.Println("Controllers setup done. Starting server at port 8000");
 

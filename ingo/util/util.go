@@ -15,3 +15,9 @@ func GetN(context *gin.Context) int {
   }
   return int(n)
 }
+
+func HandleError(err error) {
+  if err != nil {
+    log.Fatalln("Error occurred  while doing something", err)
+  }
+}
